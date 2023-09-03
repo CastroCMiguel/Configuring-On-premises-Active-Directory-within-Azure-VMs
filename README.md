@@ -61,6 +61,8 @@ Now you should have a Resource Group, a Virtual Network, a Windows Server 2022 V
 <img src="https://i.imgur.com/30y7u51.png" alt="1"/>
 </p>
 
+<h2></h2>
+
 - To ensure connectivity between the Windows 10 client "Client-1" and the Windows Server 2022 Domain Controller "DC-1" in Azure, follow these steps:
 
 1. **Connect to Client-1 using Remote Desktop:**
@@ -81,6 +83,10 @@ Now you should have a Resource Group, a Virtual Network, a Windows Server 2022 V
 
    - If the ping is successful, you should see replies from "DC-1." If it fails, proceed to the next step.
 
+<p align="center">
+<img src="https://i.imgur.com/j2Cyr4X.png" alt="1"/>
+</p>
+
 3. **Enable ICMPv4 in the Local Windows Firewall on DC-1:**
 
    - On "DC-1," which is the Windows Server 2022 machine, you might need to enable ICMPv4 (ping) in the Windows Firewall to allow incoming ping requests. Here's how:
@@ -93,6 +99,10 @@ Now you should have a Resource Group, a Virtual Network, a Windows Server 2022 V
      - Locate the rule named "File and Printer Sharing (Echo Request - ICMPv4-In)" in the list.
 
      - Right-click on the rule and select "Enable Rule" to enable ICMPv4 (ping) requests.
+    
+<p align="center">
+<img src="https://i.imgur.com/8NaIYDt.png" alt="1"/>
+</p>
 
 4. **Verify Ping from Client-1 to DC-1:**
 
@@ -107,16 +117,10 @@ Now you should have a Resource Group, a Virtual Network, a Windows Server 2022 V
 With ICMPv4 enabled in the Windows Firewall on "DC-1," you should now have successful connectivity between "Client-1" and "DC-1" within your Azure environment.
 
 <p align="center">
-<img src="https://i.imgur.com/j2Cyr4X.png" alt="1"/>
-</p>
-
-<p align="center">
-<img src="https://i.imgur.com/8NaIYDt.png" alt="1"/>
-</p>
-
-<p align="center">
 <img src="https://i.imgur.com/sq2s9tG.png" alt="1"/>
 </p>
+
+<h2></h2>
 
 - To install Active Directory Domain Services (AD DS) on "DC-1" and promote it as a domain controller with a new forest, follow these steps:
 
@@ -136,6 +140,10 @@ With ICMPv4 enabled in the Windows Firewall on "DC-1," you should now have succe
      - On the "Select destination server" page, select "DC-1" as the destination server and click "Next."
      - On the "Select server roles" page, select "Active Directory Domain Services." A dialog box will appear, asking to add required features, click "Add Features" to add them, and then click "Next."
 
+<p align="center">
+<img src="https://i.imgur.com/iP9o8uD.png" alt="1"/>
+</p>
+
    - On the "Select features" page, click "Next."
 
    - On the "Active Directory Domain Services" page, read the information, and click "Next."
@@ -149,6 +157,10 @@ With ICMPv4 enabled in the Windows Firewall on "DC-1," you should now have succe
    - In the "Active Directory Domain Services Configuration Wizard," choose "Add a new forest" since you're setting up a new forest with a new domain name.
 
    - Enter your Root domain name, e.g., "mydomain.com," in the "Root domain name" field.
+
+<p align="center">
+<img src="https://i.imgur.com/fhAri4w.png" alt="1"/>
+</p>
 
    - Configure the forest and domain functional levels as per your requirements. The default values are often suitable.
 
@@ -174,13 +186,7 @@ With ICMPv4 enabled in the Windows Firewall on "DC-1," you should now have succe
 
 You have now successfully installed Active Directory Domain Services on "DC-1" and promoted it as a domain controller with a new forest and domain name. Your new domain, e.g., "mydomain.com," is ready for further configuration and user management.
 
-<p align="center">
-<img src="https://i.imgur.com/iP9o8uD.png" alt="1"/>
-</p>
-
-<p align="center">
-<img src="https://i.imgur.com/fhAri4w.png" alt="1"/>
-</p>
+<h2></h2>
 
 - To create an Admin and a Normal User account in Active Directory on "DC-1," follow these steps:
 
@@ -222,6 +228,10 @@ You have now successfully installed Active Directory Domain Services on "DC-1" a
 
    - Click "OK" to add Jane to the "Domain Admins" Security Group.
 
+<p align="center">
+<img src="https://i.imgur.com/Jr9EflK.png" alt="1"/>
+</p>
+
 5. **Log Out and Log In as "jane_admin":**
 
    - Log out of the current session on "DC-1."
@@ -230,9 +240,7 @@ You have now successfully installed Active Directory Domain Services on "DC-1" a
 
 Now, you've created an Admin account (Jane Doe) and added her to the "Domain Admins" Security Group. You can perform administrative tasks on "DC-1" using this account. Additionally, you've created Organizational Units (_EMPLOYEES and _ADMINS) to organize your Active Directory structure.
 
-<p align="center">
-<img src="https://i.imgur.com/Jr9EflK.png" alt="1"/>
-</p>
+<h2></h2>
 
 - To join "Client-1" to the domain, set its DNS settings to the private IP address of "DC-1," move it to a new OU named "_CLIENTS," and verify its presence in Active Directory Users and Computers (ADUC) on "DC-1," follow these steps:
 
@@ -259,6 +267,10 @@ Now, you've created an Admin account (Jane Doe) and added her to the "Domain Adm
    - Leave the "Alternate DNS server" blank.
 
    - Click "OK" to save the DNS settings.
+  
+<p align="center">
+<img src="https://i.imgur.com/eCHotNn.png" alt="1"/>
+</p>
 
 2. **Join "Client-1" to the Domain:**
 
@@ -275,6 +287,10 @@ Now, you've created an Admin account (Jane Doe) and added her to the "Domain Adm
      - You'll be prompted to enter credentials. Provide the username and password of an account with permission to join computers to the domain. This could be an administrator account, such as "jane_admin."
 
      - After successfully joining the domain, you'll be prompted to restart "Client-1." Click "OK" to restart the computer.
+    
+<p align="center">
+<img src="https://i.imgur.com/RTgqN8K.png" alt="1"/>
+</p>
 
 3. **Verify "Client-1" in ADUC on DC-1:**
 
@@ -298,19 +314,13 @@ Now, you've created an Admin account (Jane Doe) and added her to the "Domain Adm
 
    - "Client-1" is now within the "_CLIENTS" OU in Active Directory.
 
-With these steps, you've successfully joined "Client-1" to the domain, placed it in the "_CLIENTS" OU, and verified its presence in ADUC on "DC-1."
-
-<p align="center">
-<img src="https://i.imgur.com/eCHotNn.png" alt="1"/>
-</p>
-
-<p align="center">
-<img src="https://i.imgur.com/RTgqN8K.png" alt="1"/>
-</p>
-
 <p align="center">
 <img src="https://i.imgur.com/D9i1jCL.png" alt="1"/>
 </p>
+
+With these steps, you've successfully joined "Client-1" to the domain, placed it in the "_CLIENTS" OU, and verified its presence in ADUC on "DC-1."
+
+<h2></h2>
 
 - To set up Remote Desktop for non-administrative users on "Client-1," follow these steps:
 
@@ -342,6 +352,10 @@ With these steps, you've successfully joined "Client-1" to the domain, placed it
 
    - Click "Apply" and then "OK" to apply the changes in the System Properties window.
 
+<p align="center">
+<img src="https://i.imgur.com/J51X2oY.png" alt="1"/>
+</p>
+
 4. **Non-Administrative Users Can Now Use Remote Desktop:**
 
    - With these settings, non-administrative users within your domain can now use Remote Desktop to connect to "Client-1."
@@ -350,9 +364,7 @@ With these steps, you've successfully joined "Client-1" to the domain, placed it
 
 This configuration allows non-administrative users in the domain to access "Client-1" via Remote Desktop. Make sure that the non-administrative users have the necessary permissions to log in remotely to ensure a successful connection.
 
-<p align="center">
-<img src="https://i.imgur.com/J51X2oY.png" alt="1"/>
-</p>
+<h2></h2>
 
 - To create additional user accounts, test login, and verify their placement in the appropriate OU within Active Directory Users and Computers (ADUC), follow these steps:
 
@@ -372,6 +384,10 @@ This configuration allows non-administrative users in the domain to access "Clie
 
    - Execute the script. It will create the specified user accounts within Active Directory.
 
+<p align="center">
+<img src="https://i.imgur.com/rDJ6Aqq.png" alt="1"/>
+</p>
+
 4. **Verify User Accounts in ADUC:**
 
    - Open "Active Directory Users and Computers" (ADUC) on "DC-1."
@@ -380,27 +396,23 @@ This configuration allows non-administrative users in the domain to access "Clie
 
    - Verify that the newly created user accounts are listed within the correct OU.
 
+<p align="center">
+<img src="https://i.imgur.com/17nSQJD.png" alt="1"/>
+</p>
+
 5. **Test Login to "Client-1" with a Newly Created User Account:**
 
    - Attempt to log in to "Client-1" using one of the newly created user accounts. Ensure you use the following format for the username: "mydomain.com\username."
 
    - Test login for one or more of the newly created user accounts to confirm that they can access "Client-1."
-
-By following these steps, you will create additional user accounts, verify their placement in the appropriate OU within ADUC, and test login functionality on "Client-1." This ensures that your on-premises Active Directory within Azure Virtual Machines is configured correctly for user and resource management.
-
-<p align="center">
-<img src="https://i.imgur.com/rDJ6Aqq.png" alt="1"/>
-</p>
-
-<p align="center">
-<img src="https://i.imgur.com/17nSQJD.png" alt="1"/>
-</p>
-
+   - 
 <p align="center">
 <img src="https://i.imgur.com/LDL10t6.png" alt="1"/>
 </p>
 
- **Summary:**
+By following these steps, you will create additional user accounts, verify their placement in the appropriate OU within ADUC, and test login functionality on "Client-1." This ensures that your on-premises Active Directory within Azure Virtual Machines is configured correctly for user and resource management.
+
+<h2>Summary:</h2>
 
 This project successfully involved the setup and configuration of on-premises Active Directory within Azure Virtual Machines. The key steps included:
 
