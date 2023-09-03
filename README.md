@@ -8,7 +8,7 @@ This lab offers a comprehensive guide on deploying on-premises Active Directory 
 
 <h2>Video Demonstration</h2>
 
-- ### [YouTube: How to Deploy on-premises Active Directory within Azure Compute](https://www.youtube.com/watch?v=DOF0VgkVoD0)
+- ### [YouTube: How to Deploy on-premises Active Directory within Azure](https://www.youtube.com/watch?v=DOF0VgkVoD0)
 
 <h2>Environments and Technologies Used</h2>
 
