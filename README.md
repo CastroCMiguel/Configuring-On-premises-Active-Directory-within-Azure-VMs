@@ -101,7 +101,7 @@ Now you should have a Resource Group, a Virtual Network, a Windows Server 2022 V
      - Right-click on the rule and select "Enable Rule" to enable ICMPv4 (ping) requests.
     
 <p align="center">
-<img src="https://i.imgur.com/8NaIYDt.png" alt="1"/>
+<img src="https://i.imgur.com/UkNLbgM.png" alt="1"/>
 </p>
 
 4. **Verify Ping from Client-1 to DC-1:**
